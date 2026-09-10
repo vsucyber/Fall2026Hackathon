@@ -3,282 +3,691 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Collaborative Hackathon Fall 2025</title>
-  <style>
-    :root {
-      --vsu-blue: #00205b;
-      --vsu-orange: #f47321;
-      --vsu-light-orange: #ffa300;
-      --vsu-white: #ffffff;
-      --vsu-gray: #f4f4f4;
-      --disabled-btn: #cccccc;
-      --challenges-bg: #ffd966;
-    }<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Collaborative Hackathon Fall 2025</title>
+  <meta name="description" content="Collaborative Hackathon Fall 2026 - an international student innovation event involving VSU, NTPU, NED University, Brightpoint, and NOVA.">
+  <title>Collaborative Hackathon Fall 2026</title>
 
   <style>
     :root {
-      --vsu-blue: #00205b;
-      --vsu-orange: #f47321;
-      --vsu-light-orange: #ffa300;
-      --vsu-white: #ffffff;
-      --vsu-gray: #f4f4f4;
-      --disabled-btn: #cccccc;
-      --challenges-bg: #ffd966;
+      --blue: #00205b;
+      --blue-2: #073b83;
+      --orange: #f47321;
+      --gold: #ffa300;
+      --ink: #12213a;
+      --muted: #667085;
+      --light: #f5f7fb;
+      --white: #ffffff;
+      --border: #e5e9f2;
+      --shadow: 0 12px 34px rgba(0, 32, 91, .10);
+      --radius: 18px;
     }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: var(--vsu-gray);
-      color: var(--vsu-blue);
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--light);
       line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
     }
 
-    header {
-      background-color: var(--vsu-blue);
-      color: var(--vsu-white);
-      padding: 1.5rem;
+    a { color: inherit; }
+
+    .topbar {
+      background: #00163f;
+      color: #dbe7ff;
       text-align: center;
+      padding: 8px 16px;
+      font-size: .92rem;
+      letter-spacing: .2px;
     }
 
     nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
       display: flex;
-      justify-content: center;
-      background-color: var(--vsu-orange);
-    }
-
-    nav a {
-      color: var(--vsu-white);
-      padding: 14px 20px;
-      text-decoration: none;
-      text-align: center;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      background-color: var(--vsu-light-orange);
-    }
-
-    .container {
-      padding: 20px;
-      margin: 20px;
-      background-color: var(--vsu-white);
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      flex-grow: 1;
-    }
-
-    .section { margin-bottom: 40px; }
-
-    h2 { color: var(--vsu-orange); }
-
-    .logo-container {
-      display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: space-between;
       gap: 20px;
-      margin-top: 20px;
+      padding: 14px clamp(18px, 5vw, 70px);
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
     }
 
-    .logo-container img {
-      width: 80px;
-      height: auto;
+    .brand {
+      text-decoration: none;
+      color: var(--blue);
+      font-weight: 800;
+      letter-spacing: .2px;
+      white-space: nowrap;
     }
 
-    .box-container {
+    .nav-links {
       display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 20px;
+      gap: 4px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--blue);
+      padding: 8px 11px;
+      border-radius: 8px;
+      font-size: .94rem;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover { background: #eef3fb; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(255,163,0,.28), transparent 25%),
+        radial-gradient(circle at 10% 80%, rgba(244,115,33,.20), transparent 28%),
+        linear-gradient(135deg, #001f58 0%, #073b83 60%, #0f5aa5 100%);
+      color: white;
+      padding: 78px clamp(20px, 7vw, 100px) 64px;
+    }
+
+    .hero-grid {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.4fr .8fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 7px 12px;
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      font-weight: 700;
+      font-size: .9rem;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 6vw, 5.4rem);
+      line-height: .98;
+      margin: 0 0 20px;
+      letter-spacing: -2px;
+    }
+
+    .hero h1 span { color: #ffc55a; }
+
+    .hero p {
+      max-width: 760px;
+      font-size: 1.15rem;
+      color: #e8efff;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
       flex-wrap: wrap;
     }
 
-    .box {
-      background-color: var(--vsu-light-orange);
-      padding: 20px;
-      text-align: center;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      width: 100%;
-      max-width: 400px;
-    }
-
-    .challenges-box {
-      background-color: var(--challenges-bg);
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
-    .blinking {
-      font-weight: bold;
-      animation: blink 1s infinite;
-    }
-
-    .register-btn {
-      background-color: var(--vsu-blue);
-      color: var(--vsu-white);
-      padding: 10px 20px;
-      text-decoration: none;
-      font-size: 1.1rem;
-      border-radius: 5px;
+    .btn {
       display: inline-block;
+      padding: 12px 19px;
+      border-radius: 10px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform .18s ease, box-shadow .18s ease;
     }
 
-    .register-btn.disabled {
-      background-color: var(--disabled-btn);
-      cursor: not-allowed;
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--orange); color: white; box-shadow: 0 8px 20px rgba(0,0,0,.18); }
+    .btn-secondary { border: 1px solid rgba(255,255,255,.55); color: white; background: rgba(255,255,255,.07); }
+    .btn-muted { background: #e9edf4; color: #6c7480; cursor: default; }
+    .btn-muted:hover { transform: none; }
+
+    .hero-card {
+      background: rgba(255,255,255,.11);
+      border: 1px solid rgba(255,255,255,.24);
+      border-radius: 22px;
+      padding: 26px;
+      box-shadow: 0 20px 55px rgba(0,0,0,.18);
     }
 
-    .event-details-list {
-      background-color: var(--vsu-gray);
-      padding: 15px 20px;
-      border-left: 5px solid var(--vsu-orange);
-      border-radius: 8px;
-      line-height: 1.7;
+    .hero-card h3 { margin-top: 0; font-size: 1.25rem; }
+    .hero-card .fact { border-top: 1px solid rgba(255,255,255,.18); padding: 13px 0; }
+    .hero-card .fact:first-of-type { border-top: 0; }
+    .fact strong { display: block; color: #ffc55a; font-size: .82rem; text-transform: uppercase; letter-spacing: .8px; }
+
+    .partners {
+      max-width: 1180px;
+      margin: -28px auto 0;
+      position: relative;
+      z-index: 5;
+      padding: 0 20px;
     }
+
+    .partner-panel {
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px 22px 20px;
+      text-align: center;
+    }
+
+    .partner-panel > p {
+      margin: 0 0 13px;
+      color: var(--muted);
+      font-size: .9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+    }
+
+    .logo-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      align-items: center;
+    }
+
+    .partner-logo {
+      min-height: 92px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .partner-logo img {
+      max-width: 118px;
+      width: 100%;
+      height: 62px;
+      object-fit: contain;
+    }
+
+    .partner-logo span {
+      color: #4d5870;
+      font-size: .79rem;
+      font-weight: 700;
+    }
+
+    main { max-width: 1180px; margin: auto; padding: 62px 20px 40px; }
+
+    section { margin-bottom: 72px; scroll-margin-top: 86px; }
+
+    .section-heading {
+      max-width: 720px;
+      margin-bottom: 28px;
+    }
+
+    .section-kicker {
+      color: var(--orange);
+      text-transform: uppercase;
+      font-weight: 800;
+      font-size: .82rem;
+      letter-spacing: 1.1px;
+    }
+
+    h2 {
+      color: var(--blue);
+      font-size: clamp(1.9rem, 4vw, 2.7rem);
+      line-height: 1.1;
+      margin: 5px 0 12px;
+    }
+
+    .lead { color: var(--muted); font-size: 1.05rem; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 26px;
+    }
+
+    .stat {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 23px;
+      box-shadow: 0 6px 22px rgba(0,32,91,.05);
+    }
+
+    .stat strong { display: block; font-size: 2rem; color: var(--orange); line-height: 1; margin-bottom: 8px; }
+    .stat span { color: var(--muted); font-size: .95rem; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 25px;
+      box-shadow: 0 7px 24px rgba(0,32,91,.06);
+    }
+
+    .card-number {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: #fff1e7;
+      color: var(--orange);
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .card h3 { color: var(--blue); margin: 0 0 8px; }
+    .card p { color: var(--muted); margin: 0; }
+
+    .feature-band {
+      background: linear-gradient(115deg, #fff6ec, #fffaf3);
+      border: 1px solid #ffd9b9;
+      border-radius: 22px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .feature-band ul { margin: 0; padding-left: 22px; }
+    .feature-band li { margin: 10px 0; }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 20px;
+      left: 8%;
+      right: 8%;
+      height: 3px;
+      background: #dce4f2;
+      z-index: -1;
+    }
+
+    .step {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 21px;
+    }
+
+    .dot {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      margin-bottom: 15px;
+      box-shadow: 0 0 0 6px var(--light);
+    }
+
+    .step small { color: var(--orange); font-weight: 800; text-transform: uppercase; }
+    .step h3 { margin: 5px 0 6px; color: var(--blue); }
+    .step p { margin: 0; color: var(--muted); font-size: .93rem; }
+
+    .criteria {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .criterion {
+      display: flex;
+      gap: 15px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .criterion b { color: var(--blue); }
+    .criterion p { margin: 4px 0 0; color: var(--muted); }
+    .criterion .icon { font-size: 1.5rem; }
+
+    .cta {
+      background: linear-gradient(120deg, var(--blue), var(--blue-2));
+      color: white;
+      border-radius: 24px;
+      padding: 38px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .cta h2 { color: white; margin-top: 0; }
+    .cta p { color: #dfe9ff; margin-bottom: 0; }
+
+    .faq details {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 17px 20px;
+      margin-bottom: 10px;
+    }
+
+    .faq summary { cursor: pointer; color: var(--blue); font-weight: 800; }
+    .faq p { color: var(--muted); margin-bottom: 0; }
 
     footer {
+      background: #00163f;
+      color: #d8e4ff;
+      padding: 38px 20px;
       text-align: center;
-      padding: 1rem;
-      background-color: var(--vsu-blue);
-      color: var(--vsu-white);
-      width: 100%;
+    }
+
+    footer a { color: white; }
+    footer p { margin: 5px 0; }
+
+    @media (max-width: 900px) {
+      .hero-grid, .feature-band, .cta { grid-template-columns: 1fr; }
+      .logo-row { grid-template-columns: repeat(3, 1fr); }
+      .stats, .timeline { grid-template-columns: repeat(2, 1fr); }
+      .cards { grid-template-columns: 1fr 1fr; }
+      .timeline::before { display: none; }
+    }
+
+    @media (max-width: 620px) {
+      nav { position: static; flex-direction: column; align-items: flex-start; }
+      .nav-links { justify-content: flex-start; }
+      .hero { padding-top: 52px; }
+      h1 { letter-spacing: -1px; }
+      .logo-row, .stats, .cards, .timeline, .criteria { grid-template-columns: 1fr; }
+      .partner-logo { min-height: 80px; }
+      .cta { padding: 28px; }
     }
   </style>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-
-      const today = new Date();
-      const deadline = new Date("2025-11-17");
-      const blinkEnd = new Date("2025-11-14");
-
-      const regStatus = document.getElementById("registration-status");
-      const registerBtn = document.getElementById("register-btn");
-      const topicsHeading = document.getElementById("topics-heading");
-
-      // SAFETY CHECKS — prevents null access
-      if (regStatus && registerBtn) {
-        if (today > deadline) {
-          regStatus.textContent = "Registration Closed";
-          registerBtn.classList.add("disabled");
-          registerBtn.disabled = true;
-        } else {
-          regStatus.textContent = "Registration Open";
-          registerBtn.disabled = false;
-        }
-      }
-
-      if (topicsHeading && today <= blinkEnd) {
-        topicsHeading.classList.add("blinking");
-      }
-    });
-  </script>
-
 </head>
+
 <body>
+  <div class="topbar">November 5-10, 2026 • International Student Innovation & Collaboration</div>
 
-<header>
-  <h1>Collaborative Hackathon Fall 2025</h1>
-  <p>A Global Hackathon Involving Virginia State University and National Taipei University</p>
+  <nav>
+    <a class="brand" href="#home">Collaborative Hackathon 2026</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#how">How It Works</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#judging">Judging</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
 
-  <div class="logo-container">
-    <img src="ntpu-logo.jfif" alt="NTPU Logo">
-    <img src="vsu-logo.jfif" alt="VSU Logo">
-  </div>
-</header>
+  <header class="hero" id="home">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow">FALL 2026 COLLABORATIVE HACKATHON</span>
+        <h1>Build ideas.<br><span>Cross borders.</span><br>Make impact.</h1>
+        <p>
+          Students from five partner institutions come together to imagine, prototype, and present
+          technology solutions to real-world challenges. Bring your creativity, teamwork, and problem-solving skills.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://forms.gle/ssPTownd6Ndg5eiF7" target="_blank" rel="noopener noreferrer">Register Now</a>
+          <a class="btn btn-secondary" href="#how">See How It Works</a>
+        </div>
+      </div>
 
-<nav>
-  <a href="#home">Home</a>
-  <a href="#objectives">Objectives</a>
-  <a href="#why-participate">Why Participate</a>
-  <a href="#topics">Application Topics</a>
-  <a href="#prizes">Prizes</a>
-  <a href="#contact">Contact</a>
-</nav>
+      <div class="hero-card">
+        <h3>Event Snapshot</h3>
+        <div class="fact"><strong>Who</strong>Students from participating institutions</div>
+        <div class="fact"><strong>Format</strong>Collaborative design, prototyping & presentation</div>
+        <div class="fact"><strong>Focus</strong>Real-world application challenges</div>
+        <div class="fact"><strong>Event Dates</strong>November 5-10, 2026</div>
+      </div>
+    </div>
+  </header>
 
-<div class="box-container">
-
-  <div class="box">
-    <h2>Register for the Hackathon</h2>
-    <p id="registration-status">Checking status...</p>
-    <a href="https://forms.gle/juc4K3d47WooooYk6" id="register-btn" class="register-btn" target="_blank">Register Here</a>
-    <p>Deadline for registration: November 14, 2025</p>
-  </div>
-
-  <div class="box challenges-box" id="topics">
-    <h2 id="topics-heading">Application Topics</h2>
-    <p><strong>The application topics are now available.</strong></p>
-    <p>Download the full topic description below:</p>
-
-    <p>
-      <a href="FA25_Hackathon_Topics.pdf"
-         style="font-weight: bold; color: var(--vsu-blue); text-decoration: underline;"
-         target="_blank">
-         📄 Download FA25_Hackathon_Topics.pdf
-      </a>
-    </p>
-
-    <p><strong>Submission Deadline:</strong><br>November 18, 2025 — 11:59 PM ET</p>
-  </div>
-
-</div>
-
-<div class="container">
-
-  <section id="home" class="section">
-    <h2>Welcome to Collaborative Hackathon Fall 2025</h2>
-    <p>The Collaborative Hackathon Fall 2025 challenges students from Virginia State University and National Taipei University to design, prototype, and present mobile applications that solve real-world problems through innovation, usability, and strong visual design.</p>
+  <section class="partners" aria-label="Participating institutions">
+    <div class="partner-panel">
+      <p>Participating Institutions</p>
+      <div class="logo-row">
+        <div class="partner-logo">
+          <img src="vsu-logo.jfif" alt="Virginia State University Logo">
+          <span>Virginia State University</span>
+        </div>
+        <div class="partner-logo">
+          <img src="ntpu-logo.jfif" alt="National Taipei University Logo">
+          <span>National Taipei University</span>
+        </div>
+        <div class="partner-logo">
+          <img src="NED_logo.jpg" alt="NED University Logo">
+          <span>NED University</span>
+        </div>
+        <div class="partner-logo">
+          <img src="brightpoint.jfif" alt="Brightpoint Community College Logo">
+          <span>Brightpoint</span>
+        </div>
+        <div class="partner-logo">
+          <img src="nova.jfif" alt="Northern Virginia Community College Logo">
+          <span>NOVA</span>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section id="objectives" class="section">
-    <h2>Objectives</h2>
-    <ul>
-      <li>Promote international collaboration between VSU and NTPU students.</li>
-      <li>Encourage creativity in application design and prototyping.</li>
-      <li>Build strong UI/UX and structured design thinking skills.</li>
-      <li>Develop presentation and pitching experience.</li>
-    </ul>
-  </section>
+  <main>
+    <section id="about">
+      <div class="section-heading">
+        <span class="section-kicker">About the Event</span>
+        <h2>One challenge space. Many perspectives.</h2>
+        <p class="lead">
+          The Collaborative Hackathon Fall 2026 connects students across institutions and countries to practice
+          creative problem solving in a fast, team-oriented environment. Participants move from an idea to a
+          convincing prototype and pitch.
+        </p>
+      </div>
 
-  <section id="why-participate" class="section">
-    <h2>Why Participate?</h2>
-    <p>Gain hands-on design experience, collaborate internationally, enhance your resume, and compete for exciting prizes. This is your opportunity to turn your ideas into compelling app prototypes.</p>
-  </section>
+      <div class="stats">
+        <div class="stat"><strong>5</strong><span>Partner institutions</span></div>
+        <div class="stat"><strong>3</strong><span>Countries represented</span></div>
+        <div class="stat"><strong>1</strong><span>Shared innovation experience</span></div>
+        <div class="stat"><strong>∞</strong><span>Possibilities for creative solutions</span></div>
+      </div>
+    </section>
 
-  <section id="prizes" class="section">
-    <h2>Prizes</h2>
-    <p>Top teams will receive certificates, gadgets, and cash prizes celebrating creativity and innovation.</p>
-  </section>
+    <section id="how">
+      <div class="section-heading">
+        <span class="section-kicker">How It Works</span>
+        <h2>From challenge to final pitch</h2>
+        <p class="lead">The hackathon is structured around a simple progression so students can focus on building and communicating a strong solution.</p>
+      </div>
 
-  <section id="contact" class="section">
-    <h2>Contact Us</h2>
-    <p>For questions, please contact:</p>
-    <p><strong>Email:</strong> <a href="mailto:mrais@vsu.edu">mrais@vsu.edu</a></p>
-    <p><strong>Email:</strong> <a href="mailto:jlee@vsu.edu">jlee@vsu.edu</a></p>
-  </section>
+      <div class="cards">
+        <article class="card">
+          <div class="card-number">01</div>
+          <h3>Discover the Challenge</h3>
+          <p>Review the announced application topics, identify a meaningful problem, and understand the people affected by it.</p>
+        </article>
+        <article class="card">
+          <div class="card-number">02</div>
+          <h3>Form Your Idea</h3>
+          <p>Define your users, the problem you will solve, and the core features that make your solution useful and distinctive.</p>
+        </article>
+        <article class="card">
+          <div class="card-number">03</div>
+          <h3>Design & Prototype</h3>
+          <p>Create the workflow, interface, and prototype that demonstrate how your application would work in practice.</p>
+        </article>
+        <article class="card">
+          <div class="card-number">04</div>
+          <h3>Test the Story</h3>
+          <p>Refine usability, remove unnecessary complexity, and make sure your prototype clearly addresses the original problem.</p>
+        </article>
+        <article class="card">
+          <div class="card-number">05</div>
+          <h3>Prepare the Pitch</h3>
+          <p>Explain the problem, your solution, why it matters, and what makes your approach innovative and practical.</p>
+        </article>
+        <article class="card">
+          <div class="card-number">06</div>
+          <h3>Present & Celebrate</h3>
+          <p>Showcase your work to faculty, peers, and judges and learn from solutions developed by teams across institutions.</p>
+        </article>
+      </div>
+    </section>
 
-</div>
+    <section id="topics">
+      <div class="feature-band">
+        <div>
+          <span class="section-kicker">Application Topics</span>
+          <h2>What will you build?</h2>
+          <p class="lead">
+            Challenge topics will focus on real-world needs where a thoughtful digital solution can make a measurable
+            difference. Full challenge descriptions and submission instructions will be posted here for the event.
+          </p>
+          <span class="btn btn-muted">Challenge Topics Coming Soon</span>
+        </div>
+        <div>
+          <h3>Strong submissions should demonstrate:</h3>
+          <ul>
+            <li>A clearly defined problem and target user</li>
+            <li>A coherent application concept and workflow</li>
+            <li>Thoughtful UI/UX and visual communication</li>
+            <li>Creativity balanced with practical usefulness</li>
+            <li>A persuasive final presentation or demonstration</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-<footer>
-  <p>&copy; 2025 Collaborative Hackathon. All rights reserved.</p>
-</footer>
+    <section id="timeline">
+      <div class="section-heading">
+        <span class="section-kicker">Event Journey</span>
+        <h2>Fall 2026 timeline</h2>
+        <p class="lead">The hackathon runs from November 5 through November 10, 2026, from challenge launch to final showcase.</p>
+      </div>
 
+      <div class="timeline">
+        <div class="step">
+          <div class="dot">1</div>
+          <small>Open Now</small>
+          <h3>Registration</h3>
+          <p>Register individually or include the team members who have already been finalized. Cross-university teams are encouraged.</p>
+        </div>
+        <div class="step">
+          <div class="dot">2</div>
+          <small>November 5</small>
+          <h3>Challenge Launch</h3>
+          <p>Teams begin the hackathon with the challenge topics, instructions, and submission expectations.</p>
+        </div>
+        <div class="step">
+          <div class="dot">3</div>
+          <small>November 5-9</small>
+          <h3>Build & Collaborate</h3>
+          <p>Teams develop their concepts, prototypes, and presentation materials while collaborating across institutions.</p>
+        </div>
+        <div class="step">
+          <div class="dot">4</div>
+          <small>November 10</small>
+          <h3>Final Showcase</h3>
+          <p>Teams present their work, share their solutions with the hackathon community, and top submissions are recognized.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="judging">
+      <div class="section-heading">
+        <span class="section-kicker">Judging</span>
+        <h2>What makes a strong solution?</h2>
+        <p class="lead">Use these qualities to guide your solution from the first idea through the final presentation.</p>
+      </div>
+
+      <div class="criteria">
+        <div class="criterion"><div class="icon">💡</div><div><b>Innovation</b><p>How creative, distinctive, and thoughtful is the proposed solution?</p></div></div>
+        <div class="criterion"><div class="icon">🎯</div><div><b>Problem Fit</b><p>Does the solution address a clear and meaningful real-world need?</p></div></div>
+        <div class="criterion"><div class="icon">🧭</div><div><b>Usability & Design</b><p>Is the experience understandable, accessible, and visually coherent?</p></div></div>
+        <div class="criterion"><div class="icon">🚀</div><div><b>Feasibility</b><p>Could the concept realistically be developed and used beyond the prototype?</p></div></div>
+        <div class="criterion"><div class="icon">🛠️</div><div><b>Prototype Quality</b><p>Does the prototype clearly demonstrate the essential features and workflow?</p></div></div>
+        <div class="criterion"><div class="icon">🎤</div><div><b>Presentation</b><p>Can the team clearly communicate the problem, solution, value, and impact?</p></div></div>
+      </div>
+    </section>
+
+    <section id="prizes">
+      <div class="feature-band">
+        <div>
+          <span class="section-kicker">Recognition</span>
+          <h2>Compete, learn, and get recognized.</h2>
+          <p class="lead">Top teams will be recognized for outstanding creativity, collaboration, design, and innovation. Prize information will be shared here before the final showcase.</p>
+        </div>
+        <div>
+          <h3>Why participate?</h3>
+          <ul>
+            <li>Build a portfolio-ready project</li>
+            <li>Work with students beyond your own campus</li>
+            <li>Practice rapid design and problem solving</li>
+            <li>Strengthen presentation and pitching skills</li>
+            <li>Earn recognition for your work</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="faq">
+      <div class="section-heading">
+        <span class="section-kicker">FAQ</span>
+        <h2>Common questions</h2>
+      </div>
+
+      <details>
+        <summary>Who can participate?</summary>
+        <p>Students from Virginia State University, National Taipei University, NED University, Brightpoint Community College, and Northern Virginia Community College (NOVA) may participate. Teams are encouraged to include students from more than one university.</p>
+      </details>
+      <details>
+        <summary>Do I need to be an expert programmer?</summary>
+        <p>No. The hackathon welcomes students with varied technical backgrounds. Strong teams combine problem solving, application design, prototyping, teamwork, technical thinking, and presentation skills.</p>
+      </details>
+      <details>
+        <summary>When will the application topics be released?</summary>
+        <p>Challenge topics and submission instructions will be posted on this page for the November 5 launch.</p>
+      </details>
+      <details>
+        <summary>When are registration and submission deadlines?</summary>
+        <p>The hackathon runs November 5-10, 2026. Registration is open now; submission and presentation details will be provided with the challenge instructions.</p>
+      </details>
+    </section>
+
+    <section class="cta" id="contact">
+      <div>
+        <span class="section-kicker" style="color:#ffc55a;">Stay Connected</span>
+        <h2>Ready for Fall 2026?</h2>
+        <p>Registration is now open. Join us November 5-10, 2026 for an international, cross-university innovation experience. Challenge topics and submission instructions will be posted here.</p>
+      </div>
+      <div>
+        <a class="btn btn-primary" href="https://forms.gle/ssPTownd6Ndg5eiF7" target="_blank" rel="noopener noreferrer">Register for the Hackathon</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>Collaborative Hackathon Fall 2026</strong></p>
+    <p>Virginia State University • National Taipei University • NED University • Brightpoint • NOVA</p>
+    <p><a href="mailto:mrais@vsu.edu">mrais@vsu.edu</a> &nbsp; | &nbsp; <a href="mailto:jlee@vsu.edu">jlee@vsu.edu</a></p>
+    <p>&copy; 2026 Collaborative Hackathon. All rights reserved.</p>
+  </footer>
 </body>
 </html>
-
-
-
-
-
