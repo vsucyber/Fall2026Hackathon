@@ -83,6 +83,68 @@
 
     .nav-links a:hover { background: #eef3fb; }
 
+    /* Compact release announcement inside the left side of the hero. */
+    .challenge-feature {
+      width: fit-content;
+      max-width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      margin: 0 0 19px;
+      padding: 13px 17px;
+      border: 1px solid rgba(255, 197, 90, .52);
+      border-left: 4px solid #ffc55a;
+      border-radius: 13px;
+      background: rgba(255, 255, 255, .10);
+      box-shadow: 0 9px 24px rgba(0, 0, 0, .10);
+      color: white;
+      line-height: 1.35;
+    }
+    .challenge-feature strong {
+      display: block;
+      font-size: .99rem;
+      color: #ffcf74;
+      font-weight: 800;
+      margin-bottom: 3px;
+    }
+    .challenge-feature small {
+      display: block;
+      color: #f3f6ff;
+      font-size: .88rem;
+    }
+    .challenge-feature .challenge-mark {
+      flex: 0 0 30px;
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
+      background: rgba(255, 197, 90, .17);
+      font-size: 1rem;
+    }
+    .challenge-feature.challenge-pending {
+      animation: release-glow 2.3s ease-in-out infinite;
+    }
+    a.challenge-feature {
+      text-decoration: none;
+      border-color: #ffbe62;
+      background: rgba(244, 115, 33, .22);
+      transition: transform .18s ease, background .18s ease;
+    }
+    a.challenge-feature:hover,
+    a.challenge-feature:focus-visible {
+      transform: translateY(-2px);
+      background: rgba(244, 115, 33, .35);
+    }
+    .challenge-feature[hidden], .challenge-cta[hidden] { display: none !important; }
+    @keyframes release-glow {
+      0%, 100% { box-shadow: 0 9px 24px rgba(0,0,0,.10); }
+      50% { box-shadow: 0 0 0 5px rgba(255,197,90,.17), 0 9px 24px rgba(0,0,0,.12); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .challenge-feature.challenge-pending { animation: none; }
+    }
+
     .hero {
       position: relative;
       overflow: hidden;
@@ -446,6 +508,25 @@
           Students from six partner institutions come together to imagine, prototype, and present
           technology solutions to real-world challenges. Bring your creativity, teamwork, and problem-solving skills.
         </p>
+        <!-- Problem set: intentionally placed in the LEFT hero column, alongside Event Snapshot. -->
+        <div class="challenge-release" aria-live="polite">
+          <div class="challenge-feature challenge-pending" id="challenge-pending-hero">
+            <span class="challenge-mark" aria-hidden="true">&#128274;</span>
+            <span>
+              <strong>Challenge Problem Set</strong>
+              <small>Unveiling November 7 at 8:00 a.m. EST (Virginia time)</small>
+            </span>
+          </div>
+          <a class="challenge-feature" id="challenge-ready-hero"
+             href="Fall%202026%20Hackathon%20Challenges.pdf" target="_blank" rel="noopener noreferrer"
+             aria-label="Open the Fall 2026 Hackathon Challenges PDF in a new tab" hidden>
+            <span class="challenge-mark" aria-hidden="true">&#128196;</span>
+            <span>
+              <strong>Challenge Problem Set — Now Available</strong>
+              <small>View the official challenges (PDF) &#8599;</small>
+            </span>
+          </a>
+        </div>
         <div class="hero-actions">
           <a class="btn btn-primary" href="https://forms.gle/ssPTownd6Ndg5eiF7" target="_blank" rel="noopener noreferrer">Register Now</a>
           <a class="btn btn-secondary" href="#how">See How It Works</a>
@@ -561,10 +642,16 @@
           <span class="section-kicker">Application Topics</span>
           <h2>What will you build?</h2>
           <p class="lead">
-            Challenge topics will focus on real-world needs where a thoughtful digital solution can make a measurable
-            difference. Full challenge descriptions and submission instructions will be posted here for the event.
+            Challenge topics focus on real-world needs where thoughtful digital solutions can make a measurable
+            difference. The official challenge problem set becomes available at the launch time shown below.
           </p>
-          <span class="btn btn-muted">Challenge Topics Will Be Unveiled on November 7, 2026</span>
+          <span class="btn btn-muted challenge-cta" id="challenge-pending-topics">
+            Problem Set Will Be Unveiled Nov 7 at 8:00 a.m. EST
+          </span>
+          <a class="btn btn-primary challenge-cta" id="challenge-ready-topics"
+             href="Fall%202026%20Hackathon%20Challenges.pdf" target="_blank" rel="noopener noreferrer" hidden>
+            Open Challenge Problem Set (PDF) &#8599;
+          </a>
         </div>
         <div>
           <h3>While a specific rubric will be shared with the challenge topics, strong submissions should demonstrate:</h3>
@@ -595,7 +682,7 @@
         </div>
         <div class="step">
           <div class="dot">2</div>
-          <small>November 7</small>
+          <small>November 7 · 8:00 a.m. EST</small>
           <h3>Challenge Launch</h3>
           <p>Teams begin the hackathon with the challenge topics, instructions, and submission expectations.</p>
         </div>
@@ -667,7 +754,7 @@
       </details>
       <details>
         <summary>When will the application topics be released?</summary>
-        <p>Challenge topics and submission instructions will be posted on this page on November 7</p>
+        <p>The challenge problem set will be released on November 7, 2026, at 8:00 a.m. EST (Virginia time). A PDF link will appear automatically at that time.</p>
       </details>
       <details>
         <summary>When are registration and submission deadlines?</summary>
@@ -693,5 +780,33 @@
     <p><a href="mailto:mrais@vsu.edu">mrais@vsu.edu</a> &nbsp; | &nbsp; <a href="mailto:jlee@vsu.edu">jlee@vsu.edu</a></p>
     <p>&copy; 2026 Collaborative Hackathon. All rights reserved.</p>
   </footer>
+
+  <script>
+    // November 7, 2026, at 8:00 a.m. in Virginia (EST, UTC-5).
+    // An absolute instant lets visitors in other time zones see the same release time.
+    (() => {
+      const RELEASE_AT = Date.parse('2026-11-07T13:00:00Z');
+      const pendingHero = document.getElementById('challenge-pending-hero');
+      const readyHero = document.getElementById('challenge-ready-hero');
+      const pendingTopics = document.getElementById('challenge-pending-topics');
+      const readyTopics = document.getElementById('challenge-ready-topics');
+
+      function refreshChallengeRelease() {
+        const isReleased = Date.now() >= RELEASE_AT;
+        pendingHero.hidden = isReleased;
+        readyHero.hidden = !isReleased;
+        pendingTopics.hidden = isReleased;
+        readyTopics.hidden = !isReleased;
+        return isReleased;
+      }
+
+      if (!refreshChallengeRelease()) {
+        const timer = window.setInterval(() => {
+          if (refreshChallengeRelease()) window.clearInterval(timer);
+        }, 1000);
+        document.addEventListener('visibilitychange', refreshChallengeRelease);
+      }
+    })();
+  </script>
 </body>
 </html>
